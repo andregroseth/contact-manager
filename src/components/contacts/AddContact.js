@@ -17,18 +17,18 @@ class AddContact extends Component {
         const {name, email, phone} = this.state;
 
         // Check For Errors
-        if(name === ''){
+        if (name === '') {
             this.setState({errors: {name: 'Name is required'}});
             return;
         }
 
-        if(email === '') {
-            this.setState({errors: { email: 'Email is required' }});
+        if (email === '') {
+            this.setState({errors: {email: 'Email is required'}});
             return;
         }
 
-        if(phone === ''){
-            this.setState({errors: { phone: 'phone number is required' }});
+        if (phone === '') {
+            this.setState({errors: {phone: 'phone number is required'}});
             return;
         }
 
@@ -65,29 +65,29 @@ class AddContact extends Component {
                             <div className="card-body">
                                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                                     <TextInputGroup
-                                    label="Name"
-                                    name="name"
-                                    placeholder="Enter Name"
-                                    value={name}
-                                    onChange={this.onChange}
-                                    error={errors.name}
+                                        label="Name"
+                                        name="name"
+                                        placeholder="Enter Name"
+                                        value={name}
+                                        onChange={this.onChange}
+                                        error={errors.name}
                                     />
-                                   <TextInputGroup
-                                    label="Email"
-                                    name="email"
-                                    type="email"
-                                    placeholder="Enter Email"
-                                    value={email}
-                                    onChange={this.onChange}
-                                    error={errors.email}
+                                    <TextInputGroup
+                                        label="Email"
+                                        name="email"
+                                        type="email"
+                                        placeholder="Enter Email"
+                                        value={email}
+                                        onChange={this.onChange}
+                                        error={errors.email}
                                     />
-                                   <TextInputGroup
-                                    label="Phone"
-                                    name="phone"
-                                    placeholder="Enter Phone Number"
-                                    value={phone}
-                                    onChange={this.onChange}
-                                    error={errors.phone}
+                                    <TextInputGroup
+                                        label="Phone"
+                                        name="phone"
+                                        placeholder="Enter Phone Number"
+                                        value={phone}
+                                        onChange={this.onChange}
+                                        error={errors.phone}
                                     />
                                     <input type="submit" value="Add Contact" className="btn btn-light btn-block" />
                                 </form>
