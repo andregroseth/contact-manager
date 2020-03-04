@@ -37,13 +37,10 @@ class AddContact extends Component {
             email,
             phone
         };
-        
-        const res = await axios.post(
-            'https://jsonplaceholder.typicode.com/users', 
-            newContact
-            );
 
-            dispatch({type: 'ADD_CONTACT', payload: res.data});
+        const res = await axios.post('https://jsonplaceholder.typicode.com/users', newContact);
+
+        dispatch({type: 'ADD_CONTACT', payload: res.data});
 
         // Clear State
         this.setState({
@@ -53,7 +50,7 @@ class AddContact extends Component {
             errors: {}
         });
 
-        this.props.history.push('/')
+        this.props.history.push('/');
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
