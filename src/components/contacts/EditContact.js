@@ -12,16 +12,16 @@ class EditContact extends Component {
     };
 
     async componentDidMount() {
-      const { id } = this.props.match.params;
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+        const {id} = this.props.match.params;
+        const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
 
-      const contact = res.data;
+        const contact = res.data;
 
-      this.setState({
-        name: contact.name,
-        email: contact.email,
-        phone: contact.phone
-      })
+        this.setState({
+            name: contact.name,
+            email: contact.email,
+            phone: contact.phone
+        });
     }
 
     onSubmit = async (dispatch, e) => {
@@ -45,6 +45,18 @@ class EditContact extends Component {
             return;
         }
 
+        const updContact = {
+            name,
+            email,
+            phone
+        };
+
+        const {id} = this.props.match.params;
+
+        const res = await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updContact);
+
+        dispatch({type: 'UPDATE_CONTACT', payload: res.data});
+
         // Clear State
         this.setState({
             name: '',
@@ -53,7 +65,7 @@ class EditContact extends Component {
             errors: {}
         });
 
-        this.props.history.push('/')
+        this.props.history.push('/');
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
@@ -95,10 +107,7 @@ class EditContact extends Component {
                                         onChange={this.onChange}
                                         error={errors.phone}
                                     />
-                                    <input 
-                                    type="submit" 
-                                    value="Update Contact"
-                                    className="btn btn-light btn-block" />
+                                    <input type="submit" value="Update Contact" className="btn btn-light btn-block" />
                                 </form>
                             </div>
                         </div>
